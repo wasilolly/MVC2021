@@ -9,7 +9,7 @@ class Application{
     public Request $request;
     public Response $response;
     public static Application $app;
-
+    public Controller $controller;
     /**
      * Undocumented function
      */
@@ -23,6 +23,13 @@ class Application{
         
     }
 
+    public function setController(Controller $controller){
+
+    }
+
+    public function getController(){
+
+    }
     public function run()
     {
        echo $this->router->resolve();
