@@ -23,10 +23,15 @@ abstract class Model
 
     abstract public function rules(): array;
 
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function validate()
-    {      
+    {
         foreach ($this->rules() as $attribute => $rules) {
-            $value = $this->{$attribute};        
+            $value = $this->{$attribute};
             foreach ($rules as $rule) {
                 $ruleName = $rule;
                 if (!is_string($ruleName)) {
@@ -52,15 +57,17 @@ abstract class Model
         return empty($this->errors);
     }
 
-    public function addError(string $attribute, string $ruleType, $ruleParams = []){
+    public function addError(string $attribute, string $ruleType, $ruleParams = [])
+    {
         $message = $this->errorMessages()[$ruleType] ?? '';
         foreach ($ruleParams as $key => $value) {
             $message = str_replace("{{$key}}", $value, $message);
         }
-        $this->errors[$attribute][]= $message;
+        $this->errors[$attribute][] = $message;
     }
 
-    public function errorMessages(){
+    public function errorMessages()
+    {
         return [
             self::RULE_REQUIRED => 'This field is required',
             self::RULE_EMAIL => 'This field must be valid email address',
@@ -70,8 +77,9 @@ abstract class Model
         ];
     }
 
-   
-    public function hasError($attribute){
+
+    public function hasError($attribute)
+    {
         return $this->errors[$attribute] ?? false;
     }
 
@@ -79,5 +87,4 @@ abstract class Model
     {
         return $this->errors[$attribute][0] ?? false;
     }
-    
 }

@@ -13,10 +13,13 @@ class Application{
 
     public static Application $app;
     public Controller $controller;
-    /**
-     * Undocumented function
-     */
     
+    /**
+     * 
+     *
+     * @param [type] $rootPath
+     * @param array $config
+     */
     public function __construct($rootPath, array $config)
     {
         self::$ROOT_DIR = $rootPath;
@@ -25,6 +28,7 @@ class Application{
         $this->response = new Response();
         $this->router = new Router($this->request, $this->response);
         $this->controller = new Controller(); //requiredd for Apache deployment
+        $this->db = new Database($config);
         
     }
 
