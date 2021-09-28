@@ -10,6 +10,7 @@ class Application{
     public Request $request;
     public Response $response;
     public Database $db;
+    public Session $session;
 
     public static Application $app;
     public Controller $controller;
@@ -27,6 +28,7 @@ class Application{
         $this->request = new Request();
         $this->response = new Response();
         $this->router = new Router($this->request, $this->response);
+        $this->session = new Session();
         $this->controller = new Controller(); //requiredd for Apache deployment
         $this->db = new Database($config);
         
