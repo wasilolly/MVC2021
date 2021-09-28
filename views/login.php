@@ -1,21 +1,13 @@
-<h1> Log in</h1>
+<?php /** $var model  \app\models\user;  */ ?>
+<div class="container">
+    <h1>Log in</h1>
+</div>
 
-<form action="", method="POST">
-    <div class="mb-3">
-        <label>Subject</label>
-        <input type="text" name="subject" class="form-control">
-    </div>
-    <div class="mb-3">
-        <label>Email</label>
-        <input type="email" name ="email"  class="form-control">
-    </div>
-    <div class="mb-3">
-        <label>Body</label>
-        <textarea name="body" class="form-control"></textarea>
-    </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input">
-        <label>Check me out</label>
-    </div>
+
+<?php $form = \app\core\forms\Form::begin('', 'post') ?>
+    
+    <?php echo $form->field($model, 'email') ?>
+    <?php echo $form->field($model, 'password')->passwordField() ?>
     <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+
+<?php echo \app\core\forms\Form::end() ?>
