@@ -1,21 +1,19 @@
+<?php
+
+/**
+ * @var $this \app\core\View
+ * @var $model \app\Models\Contact
+ */
+$this->title = 'Contact';
+?>
+
 <h1> Contact us</h1>
 
-<form action="", method="POST">
-    <div class="mb-3">
-        <label>Subject</label>
-        <input type="text" name="subject" class="form-control">
-    </div>
-    <div class="mb-3">
-        <label>Email</label>
-        <input type="email" name ="email"  class="form-control">
-    </div>
-    <div class="mb-3">
-        <label>Body</label>
-        <textarea name="body" class="form-control"></textarea>
-    </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input">
-        <label>Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<?php $form = \app\core\forms\Form::begin('', 'post') ?>
+<?php echo  $form->field($model, 'subject') ?>
+<?php echo $form->field($model, 'email') ?>
+<?php echo new \app\core\forms\TextareaField($model, 'body') ?>
+
+<button type="submit" class="btn btn-primary">Submit</button>
+
+<?php app\core\forms\Form::end(); ?>
