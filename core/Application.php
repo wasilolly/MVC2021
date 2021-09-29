@@ -2,8 +2,8 @@
 
 namespace app\core;
 
-use \app\controllers\SiteController;
-use app\models\User;
+use app\core\db\Database;
+
 
 class Application
 {
@@ -14,7 +14,7 @@ class Application
     public Request $request;
     public Response $response;
     public Database $db;
-    public ?DbModel $user;
+    public ?userModel $user;
     public Session $session;
     public View $view;
 
@@ -60,7 +60,7 @@ class Application
         return $this->controller;
     }
 
-    public function login(DbModel $user)
+    public function login(userModel $user)
     {
         $this->user = $user;
         $primaryKey = $user->primaryKey();

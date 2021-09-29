@@ -2,7 +2,6 @@
 
 namespace app\core;
 
-use Attribute;
 
 abstract class Model
 {
